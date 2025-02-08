@@ -54,17 +54,22 @@ Dastur quyidagi ruxsatlardan foydalanadi:
 ```dart
 import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
 import 'package:esc_pos_utils_plus/esc_pos_utils.dart';
+...
+  static Future<List<int>> printImage(String assetPath) async {
+    List<int> bytes = [];
+    final profile = await CapabilityProfile.load();
+    final generator = Generator(PaperSize.mm80, profile);
+    bytes += generator.reset();
 
-Future<void> printExample() async {
-  List<int> bytes = [];
-  final profile = await CapabilityProfile.load();
-  final generator = Generator(PaperSize.mm80, profile);
+    final ByteData data = await rootBundle.load(assetPath);
+    final Uint8List bytesImg = data.buffer.asUint8List();
+    final image = decodeImage(bytesImg);
+    bytes += generator.image(image!);
 
-  bytes += generator.text('Salom, Printer!', styles: PosStyles(align: PosAlign.center));
-  bytes += generator.barcode(Barcode.code128('123456789012'), height: 50);
+    return bytes;
+  }
 
-  await PrintBluetoothThermal.writeBytes(bytes);
-}
+...
 ```
 
 ## 📌 Muammolar
