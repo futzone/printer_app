@@ -82,5 +82,5 @@ MIT Litsenziya ostida tarqatiladi. Batafsil ma'lumot uchun `LICENSE` faylini ko'
 
 ---
 
-📧 **Aloqa**: Savollaringiz bo‘lsa, [Issues](https://github.com/USERNAME/printer_app/issues) bo‘limida yozib qoldiring!
+📧 **Aloqa**: Savollaringiz bo‘lsa, [Issues](https://github.com/futzoneuz/printer_app/issues) bo‘limida yozib qoldiring!
 
